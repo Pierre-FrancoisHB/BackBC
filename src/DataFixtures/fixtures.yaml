@@ -1,0 +1,51 @@
+App\Entity\Professional:
+  prof_{1..50}:
+    email: '<email()>'
+    password: '<password()>'
+    roles: '[]'
+    username: '<userName()>'
+    siret: "<regexify('[0-9]{14}')>"
+    personnalTel: "<e164phoneNumber()>"
+    accountValid: '<numberBetween(0,1)>'
+
+App\Entity\Garage:
+  garage_{1..70}:
+    garageName: '<lastName()>'
+    adress: '<streetAddress()>'
+    postCode: '<buildingNumber()>'
+    commune: '<city()>'
+    garagePhone: "<regexify('0033[0-9]{9}')>"
+    professional: '@prof_*'
+
+App\Entity\Vehicule:
+  vehicule_{1..85}:
+    referenceAd: '<ean8()>'
+    description: '<paragraph()>'
+    kilometer: '<numberBetween(0,1000000)>'
+    price: '<numberBetween(0,1000000)>'
+    year: '<numberBetween(1900,2021)>'
+    createdAt: '<datetime()>'
+    garage: '@garage_*'
+    model: '@model_*'
+    energy: '@energy_*'
+
+
+App\Entity\Brand:
+  brand_{1..50}:
+    brandName: '<lastName()>'
+
+App\Entity\Energy:
+  energy_{1..5}:
+    energyName: '<lastName()>'
+
+App\Entity\Photo:
+  photo_{1..30}:
+    photoLink: '<url()>'
+    mainPhoto: '<boolean()>'
+    vehicule: '@vehicule_*'
+
+
+App\Entity\Model:
+  model_{1..50}:
+    modelName: '<lastName()>'
+    brand: '@brand_*'
