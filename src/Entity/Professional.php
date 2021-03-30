@@ -7,9 +7,17 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=ProfessionalRepository::class)
+ * @ApiResource(
+ *      attributes={
+ *          "order"={"username":"ASC"},
+ *          },
+ *      normalizationContext={"groups"={"professional"}}
+ * )
  */
 class Professional implements UserInterface
 {
@@ -17,11 +25,13 @@ class Professional implements UserInterface
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"professional"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
+     * @Groups({"professional"})
      */
     private $email;
 
@@ -33,21 +43,25 @@ class Professional implements UserInterface
     /**
      * @var string The hashed password
      * @ORM\Column(type="string")
+     * @Groups({"professional"})
      */
     private $password;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"professional"})
      */
     private $username;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"professional"})
      */
     private $siret;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"professional"})
      */
     private $personnalTel;
 

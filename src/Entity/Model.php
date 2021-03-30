@@ -26,7 +26,7 @@ class Model
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"display:vehicule", "filter:model"})
+     * @Groups({"filter:model"})
      */
     private $id;
 

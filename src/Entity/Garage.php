@@ -23,21 +23,25 @@ class Garage
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"professional"})
      */
     private $garageName;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"professional"})
      */
     private $adress;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"professional"})
      */
     private $postCode;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"professional"})
      */
     private $commune;
 

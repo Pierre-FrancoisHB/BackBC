@@ -19,12 +19,14 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *      normalizationContext={"groups"={"display:vehicule"}}
  * )
  */
+
 class Vehicule
 {
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"display:vehicule"})
      */
     private $id;
 
@@ -79,6 +81,7 @@ class Vehicule
 
     /**
      * @ORM\ManyToOne(targetEntity=Energy::class, inversedBy="vehicules")
+     * @Groups({"display:vehicule"})
      */
     private $energy;
 
